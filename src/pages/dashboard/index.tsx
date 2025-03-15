@@ -60,16 +60,16 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="w-full h-full flex flex-col mt-[5.4rem] p-4">
+    <div className="w-full h-screen overflow-hidden flex flex-col justify-center items-center p-4">
       <Navbar />
       <Image
-        className="absolute w-full h-full"
+        className="absolute z-0 top-10 0 left-0 right-0 bottom-0 w-full"
         src="/assets/map.webp"
         alt=""
         width={10000}
         height={10000}
       />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center p-10 mt-10 rounded-md">
+      <div className=" flex flex-col items-center justify-center p-10 mt-10 rounded-md">
         <div className="w-fit h-fit flex flex-col justify-center items-center bg-white border-5 border-black rounded-md relative bg-[radial-gradient(circle,_#302f3330_2px,_transparent_2px)] bg-[size:10px_10px]">
           <div className="w-fit h-fit absolute -top-18 left-1/2 -translate-x-1/2  bg-white rounded-full">
             <UserCircle className="w-32 h-32" />

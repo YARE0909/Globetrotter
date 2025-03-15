@@ -146,7 +146,7 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="w-full h-full flex flex-col mt-[5.4rem] p-4">
+    <div className="w-full h-full flex flex-col mt-[6rem] p-4">
       <Navbar />
       <div className="w-full flex justify-between items-center">
         <div className="flex gap-4 items-center">
