@@ -4,6 +4,7 @@ import Navbar from "@/components/ui/Navbar";
 import { QuestionStatus } from "@/lib/enums/questionStatus";
 import { Question, User } from "@/lib/types";
 import { ArrowLeft } from "lucide-react";
+import { useRouter } from "next/router";
 import { parseCookies } from "nookies";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -20,6 +21,8 @@ export default function Index() {
   const [disableOptions, setDisableOptions] = useState<boolean>(false);
   const [funFact, setFunFact] = useState<string>("");
   const [showFunFact, setShowFunFact] = useState<boolean>(false);
+
+  const router = useRouter();
 
   const fetchUser = async () => {
     try {
@@ -133,6 +136,15 @@ export default function Index() {
     fetchQuestions();
   }, []);
 
+  useEffect(() => {
+    const cookies = parseCookies();
+    const { token } = cookies;
+
+    if (!token) {
+      router.push("/");
+    }
+  }, []);
+
   return (
     <div className="w-full h-full flex flex-col mt-[5.4rem] p-4">
       <Navbar />
@@ -175,10 +187,10 @@ export default function Index() {
                     setDisableSubmit(false);
                     setSelectedOption(option);
                   }}
-                  className={`w-full py-4 bg-white rounded-md text-2xl font-bold border-4 hover:bg-black hover:text-white duration-300 border-black cursor-pointer ${
+                  className={`w-full py-4 rounded-md text-2xl font-bold border-4 hover:bg-black hover:text-white duration-300 border-black cursor-pointer ${
                     selectedOption === option
                       ? "bg-pink-500 hover:bg-pink-500"
-                      : ""
+                      : "bg-white"
                   }`}
                 >
                   {option}
