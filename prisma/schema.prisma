@@ -7,11 +7,28 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model User {
-  id          String @id @default(auto()) @map("_id") @db.ObjectId
-  userName    String @unique
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  userName    String     @unique
   password    String
   displayName String
-  score       Int    @default(0)
+  score       Int        @default(0)
+  inCorrectAnswers Int   @default(0)
+  Question    Question[]
+}
+
+model Question {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  userId     String   @db.ObjectId
+  city       String
+  country    String
+  attempts   Int      @default(1)
+  userAnswer String?
+  clues      String[]
+  trivia     String[]
+  fun_fact   String[]
+  verified   Boolean  @default(false)
+
+  // Relation to the User model
+  user User @relation(fields: [userId], references: [id])
 }

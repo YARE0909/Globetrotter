@@ -1,0 +1,43 @@
+{
+  "correct_feedback": [
+    "You're on fire! 🔥 Keep up the great work!",
+    "Boom! Nailed it like a pro!",
+    "Correctamundo! You're a quiz ninja!",
+    "You're so right, even your shadow is impressed!",
+    "High five! ✋ That was spot on!",
+    "You're a genius in disguise! Or are you even disguising?",
+    "Bingo! You've got the magic touch!",
+    "You're crushing it like a soda can!",
+    "Winner, winner, chicken dinner!",
+    "You're so sharp, you might cut yourself!",
+    "You're on a roll! Keep it up!",
+    "You're a star! Shine on!",
+    "You're a wizard! Keep casting those spells!",
+    "You're a rockstar! Keep on rockin'!",
+    "You're a superhero! Keep saving the day!",
+    "You're a legend! Keep being awesome!",
+    "You're a champion! Keep winning!",
+    "You're a master! Keep mastering!",
+    "You're a genius! Keep being smart!",
+    "You're a winner! Keep winning!",
+    "You're a boss! Keep bossing!",
+    "You're a beast! Keep being a beast!",
+    "You're a king! Keep ruling!",
+    "You're a queen! Keep reigning!"
+  ],
+  "incorrect_feedback": [
+    "Oopsie daisy! Let's give it another shot!",
+    "Not quite, but hey, even Einstein had bad days!",
+    "Close, but no cigar! Keep trying!",
+    "Wrong turn! Recalculating your route to the right answer.",
+    "That's a 'nope' from me, but don't give up!",
+    "Mistakes are proof you're trying. Keep going!",
+    "Swing and a miss! But you're still in the game!",
+    "Not this time, but your persistence is admirable!",
+    "Incorrect, but every failure is a step to success!",
+    "Whoops! That answer took a detour. Let's get back on track!",
+    "Not quite, but you're getting warmer!",
+    "Almost there! Keep going!",
+    "Not quite, but you're on the right track!"
+  ]
+}
