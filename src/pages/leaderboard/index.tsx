@@ -2,17 +2,15 @@ import Button from "@/components/ui/Button";
 import ChallengeFriend from "@/components/ui/Challenge";
 import Modal from "@/components/ui/Modal";
 import Navbar from "@/components/ui/Navbar";
-import { User } from "@/lib/types";
-import { UserCircle } from "lucide-react";
-import Image from "next/image";
 import { useRouter } from "next/router";
-import { destroyCookie, parseCookies } from "nookies";
+import { parseCookies } from "nookies";
 import { useEffect, useState } from "react";
 
 export default function Index() {
   const [leaderboard, setLeaderboard] = useState<
     | {
         userName: string;
+        displayName: string;
         score: number;
         inCorrectAnswers: number;
         questionCount: number;
@@ -73,6 +71,9 @@ export default function Index() {
                     Username
                   </th>
                   <th className="p-4 text-left text-black font-extrabold text-xl border-r-4 border-black">
+                    Display Name
+                  </th>
+                  <th className="p-4 text-left text-black font-extrabold text-xl border-r-4 border-black">
                     Score
                   </th>
                   <th className="p-4 text-left text-black font-extrabold text-xl border-r-4 border-black">
@@ -91,6 +92,9 @@ export default function Index() {
                     </td>
                     <td className="p-4 text-lg font-bold border-r-4 border-black bg-white">
                       {player.userName}
+                    </td>
+                    <td className="p-4 text-lg font-bold border-r-4 border-black bg-white">
+                      {player.displayName}
                     </td>
                     <td className="p-4 text-lg font-bold border-r-4 border-black bg-white">
                       {player.score}

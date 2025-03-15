@@ -14,6 +14,7 @@ async function handler(req: AuthenticatedNextApiRequest, res: NextApiResponse) {
   const leaderboard = await prisma?.user.findMany({
     select: {
       userName: true,
+      displayName: true,
       score: true,
       inCorrectAnswers: true,
       _count: {
@@ -30,9 +31,10 @@ async function handler(req: AuthenticatedNextApiRequest, res: NextApiResponse) {
   return res.status(200).json({
     leaderboard: leaderboard?.map((user) => ({
       userName: user.userName,
+      displayName: user.displayName,
       score: user.score,
       inCorrectAnswers: user.inCorrectAnswers,
-    questionCount: user._count.Question,
+      questionCount: user._count.Question,
     })),
   });
 }
