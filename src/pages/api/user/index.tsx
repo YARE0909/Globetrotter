@@ -3,6 +3,7 @@ import {
   Authorization,
   AuthenticatedNextApiRequest,
 } from "@/lib/middlewares/Authorization";
+import prisma from "@/lib/prisma";
 
 async function handler(req: AuthenticatedNextApiRequest, res: NextApiResponse) {
   if (req.method !== "GET") {

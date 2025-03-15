@@ -6,6 +6,7 @@ import { Destination, Question } from "@/lib/types";
 import { GetRandomOptions, GetRandomQuestion } from "@/lib/util/questions";
 import shuffleArray from "@/lib/util/randomiseArray";
 import type { NextApiResponse } from "next";
+import prisma from "@/lib/prisma";
 
 async function handler(req: AuthenticatedNextApiRequest, res: NextApiResponse) {
   if (req.method !== "GET") {

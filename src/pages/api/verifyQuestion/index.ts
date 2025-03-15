@@ -4,6 +4,7 @@ import {
   AuthenticatedNextApiRequest,
 } from "@/lib/middlewares/Authorization";
 import { QuestionStatus } from "@/lib/enums/questionStatus";
+import prisma from "@/lib/prisma";
 
 async function handler(req: AuthenticatedNextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") {
