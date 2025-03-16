@@ -69,7 +69,7 @@ const AuthTabs = () => {
         displayName: registerFormData.displayName,
         password: registerFormData.password,
       });
-      if (response.status === 200) {
+      if (response.status === 201) {
         toast.success("Registered successfully");
         setActiveTab("login");
       } else if (response.status === 400) {
