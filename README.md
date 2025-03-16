@@ -40,5 +40,7 @@ npm start      # Start the production server
 - 🔹 **Fun Learning** – Unlock interesting facts about each city after every guess
 - 🔹 **Dynamic Gameplay** – Endless destinations to keep the game fresh
 
+Best experienced on desktop for now, Mobile view will be optimised more in the future
+
 Stay tuned for more updates and new features! 🚀
 
