@@ -60,50 +60,55 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="w-full h-screen overflow-hidden flex flex-col justify-center items-center p-4">
+    <div className="relative w-full h-screen overflow-hidden flex flex-col justify-center items-center p-2">
       <Navbar />
+      {/* Background Image */}
       <Image
-        className="absolute z-0 top-10 0 left-0 right-0 bottom-0 w-full"
+        className="absolute inset-0 w-full h-full object-cover z-0"
         src="/assets/map.webp"
-        alt=""
-        width={10000}
-        height={10000}
+        alt="Map background"
+        layout="fill"
       />
-      <div className=" flex flex-col items-center justify-center p-10 mt-10 rounded-md">
-        <div className="w-fit h-fit flex flex-col justify-center items-center bg-white border-5 border-black rounded-md relative bg-[radial-gradient(circle,_#302f3330_2px,_transparent_2px)] bg-[size:10px_10px]">
-          <div className="w-fit h-fit absolute -top-18 left-1/2 -translate-x-1/2  bg-white rounded-full">
-            <UserCircle className="w-32 h-32" />
+      {/* Main Content */}
+      <div className="relative z-10 w-full h-full flex flex-col items-center justify-center md:p-10 mt-10">
+        <div className="relative bg-white border-4 border-black rounded-md p-2 md:p-10 md:max-w-lg w-full bg-[radial-gradient(circle,_#302f3330_2px,_transparent_2px)] bg-[length:10px_10px]">
+          {/* Profile Icon */}
+          <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 bg-white rounded-full">
+            <UserCircle className="w-20 h-20 md:w-32 md:h-32" />
           </div>
-          <div className="w-full h-full flex flex-col space-y-2 items-center justify-center mt-10">
-            <div className="w-full flex flex-col items-center justify-center border-b-4 p-4">
-              <h1 className="text-4xl font-extrabold">{user?.displayName}</h1>
-              <h1 className="text-2xl text-gray-600 font-extrabold">
-                @{user?.userName}
+          {/* User Information */}
+          <div className="mt-4 md:mt-12 flex flex-col items-center">
+            <div className="w-full text-center border-b-4 pb-4">
+              <h1 className="text-2xl md:text-4xl font-extrabold">
+                {user?.displayName}
               </h1>
+              <p className="text-lg md:text-2xl text-gray-600 font-extrabold">
+                @{user?.userName}
+              </p>
             </div>
-            <div className="flex space-x-6 p-4 border-b-4">
-              <div className="w-full h-full flex flex-col items-center justify-center">
-                <h1 className="text-xl font-extrabold">Score</h1>
-                <h1 className="text-2xl text-gray-600 font-extrabold">
+            {/* Stats */}
+            <div className="flex flex-col md:flex md:flex-row justify-around w-full py-4 border-b-4">
+              <div className="flex flex-col items-center">
+                <span className="text-sm md:text-xl font-extrabold">Score</span>
+                <span className="text-sm md:text-2xl text-gray-600 font-extrabold">
                   {user?.score}
-                </h1>
+                </span>
               </div>
-              <div className="w-full h-full flex flex-col items-center justify-center">
-                <h1 className="text-xl font-extrabold text-center">
-                  Questions
-                </h1>
-                <h1 className="text-2xl text-gray-600 font-extrabold">
+              <div className="flex flex-col items-center">
+                <span className="text-sm md:text-xl font-extrabold">Questions</span>
+                <span className="text-sm md:text-2xl text-gray-600 font-extrabold">
                   {user?.totalQuestions}
-                </h1>
+                </span>
               </div>
-              <div className="w-full h-full flex flex-col items-center justify-center">
-                <h1 className="text-xl font-extrabold">Incorrect</h1>
-                <h1 className="text-2xl text-gray-600 font-extrabold">
+              <div className="flex flex-col items-center">
+                <span className="text-sm md:text-xl font-extrabold">Incorrect</span>
+                <span className="text-sm md:text-2xl text-gray-600 font-extrabold">
                   {user?.inCorrectAnswers}
-                </h1>
+                </span>
               </div>
             </div>
-            <div className="w-full flex flex-col space-y-4 p-4">
+            {/* Buttons */}
+            <div className="flex flex-col space-y-4 py-4 w-full">
               <a href="/game">
                 <Button text="Start Playing!" color="emerald" />
               </a>
@@ -117,6 +122,7 @@ export default function Index() {
           </div>
         </div>
       </div>
+      {/* Challenge Modal */}
       <Modal isOpen={challengeModal} onClose={handleCloseChallengeModal}>
         <ChallengeFriend username={user?.userName!} score={user?.score!} />
       </Modal>

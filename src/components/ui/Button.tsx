@@ -62,7 +62,7 @@ export default function Button({
     <button
       type={type}
       onClick={onClick}
-      className={`w-full py-4 px-6 ${colors[color]} hover:bg-black hover:text-white duration-300 text-black text-lg rounded-md font-extrabold border-4 border-black cursor-pointer`}
+      className={`w-full py-4 px-6 ${colors[color]} hover:bg-black hover:text-white duration-300 text-black text-sm md:text-lg rounded-md font-extrabold border-4 border-black cursor-pointer`}
     >
       {text}
     </button>

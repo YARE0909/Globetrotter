@@ -32,7 +32,6 @@ export default function Index() {
       });
       const data = await response.json();
       setLeaderboard(data.leaderboard);
-      console.log({ data });
     } catch (error) {
       console.error({ error });
     }
@@ -52,16 +51,51 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="w-full h-full flex flex-col mt-[6rem] p-4">
+    <div className="w-full h-full flex flex-col mt-[6rem] p-2">
       <Navbar />
       <div className="w-full h-full flex flex-col items-center space-y-4">
         <div>
-          <h1 className="font-extrabold text-5xl">Leaderboard</h1>
+          <h1 className="font-extrabold text-4xl md:text-5xl text-center">
+            Leaderboard
+          </h1>
         </div>
-        {/* A table with Position, Username and score */}
-        <div className="w-full flex items-center flex-col mt-4">
+        {/* Mobile View: Cards */}
+        <div className="w-full flex flex-wrap justify-center gap-4 mt-4 md:hidden">
           {leaderboard ? (
-            <table className="w-full max-w-7xl border-collapse border-4 border-black bg-gray-100 shadow-lg">
+            leaderboard.map((player, index) => (
+              <div
+                key={index}
+                className="w-full max-w-sm border-4 border-black bg-gray-100 shadow-lg rounded-lg"
+              >
+                <div className="w-full bg-amber-500 border-b-4 border-black p-4">
+                  <h1 className="text-xl font-extrabold">
+                    #{index + 1} {player.displayName}
+                  </h1>
+                </div>
+                <div className="w-full p-4">
+                  <h1 className="text-lg font-bold">
+                    Username: {player.userName}
+                  </h1>
+                  <h1 className="text-lg font-bold">Score: {player.score}</h1>
+                  <h1 className="text-lg font-bold">
+                    Incorrect Answers: {player.inCorrectAnswers}
+                  </h1>
+                  <h1 className="text-lg font-bold">
+                    Total Questions: {player.questionCount}
+                  </h1>
+                </div>
+              </div>
+            ))
+          ) : (
+            <div className="w-full flex items-center justify-center">
+              <h1 className="font-extrabold text-2xl">Loading...</h1>
+            </div>
+          )}
+        </div>
+        {/* Desktop View: Table */}
+        <div className="hidden md:block w-full max-w-7xl mt-4">
+          {leaderboard ? (
+            <table className="w-full border-collapse border-4 border-black bg-gray-100 shadow-lg">
               <thead className="bg-yellow-400">
                 <tr className="border-b-4 border-black">
                   <th className="p-4 text-left text-black font-extrabold text-xl border-r-4 border-black">

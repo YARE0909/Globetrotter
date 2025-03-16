@@ -87,8 +87,8 @@ const AuthTabs = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto p-5 bg-transparent">
-      <div className="flex justify-around mb-5">
+    <div className="w-full flex flex-col space-y-5">
+      <div className="w-full flex justify-around">
         <button
           className={`w-full px-4 py-2 font-bold rounded-l-md cursor-pointer border-l-3 border-t-3 border-b-3 border-black ${
             activeTab === "login"
@@ -110,29 +110,21 @@ const AuthTabs = () => {
           Register
         </button>
       </div>
-      <div className="relative w-[500px] h-[450px] overflow-hidden">
-        <div
-          className={`w-full absolute inset-0 transition-transform transform ${
-            activeTab === "login" ? "translate-x-0" : "-translate-x-full"
-          }`}
-        >
+      <div className="w-full h-[450px] overflow-hidden">
+        {activeTab === "login" && (
           <LoginForm
             onSubmit={handleLoginSubmit}
             loginFormData={loginFormData}
             setLoginFormData={setLoginFormData}
           />
-        </div>
-        <div
-          className={`w-full absolute inset-0 transition-transform transform ${
-            activeTab === "register" ? "translate-x-0" : "translate-x-full"
-          }`}
-        >
+        )}
+        {activeTab === "register" && (
           <RegisterForm
             onSubmit={handleRegisterSubmit}
             registerFormData={registerFormData}
             setRegisterFormData={setRegisterFormData}
           />
-        </div>
+        )}
       </div>
     </div>
   );
@@ -238,7 +230,7 @@ const RegisterForm = ({
         }
       />
     </div>
-    <Button text="Register" type="submit" color="purple"/>
+    <Button text="Register" type="submit" color="purple" />
   </form>
 );
 

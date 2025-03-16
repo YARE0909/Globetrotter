@@ -146,36 +146,42 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="w-full h-full flex flex-col mt-[6rem] p-4">
+    <div className="w-full h-full flex flex-col mt-[6rem] p-2 md:p-4">
       <Navbar />
       <div className="w-full flex justify-between items-center">
-        <div className="flex gap-4 items-center">
-          <div className="h-full border-r-3 border-black pr-2">
+        <div className="flex space-x-2 md:space-x-4 items-center">
+          <div className="h-full border-r-3 border-black pr-1 md:pr-2">
             <a href="/dashboard" className="">
-              <ArrowLeft className="w-10 h-10 rounded-full p-1 hover:bg-black hover:text-white duration-300" />
+              <ArrowLeft className="w-2 h-2 md:w-10 md:h-10 rounded-full p-1 hover:bg-black hover:text-white duration-300" />
             </a>
           </div>
           <div>
-            <h1 className="font-bold text-2xl">Attempt: {attempt}</h1>
-            <h1 className="font-bold text-2xl">
+            <h1 className="font-bold text-xs md:text-2xl">
+              Attempt: {attempt}
+            </h1>
+            <h1 className="font-bold text-xs md:text-2xl">
               Attempts Left: {attemptsLeft}
             </h1>
           </div>
         </div>
         <div className="flex flex-col items-end justify-end">
-          <h1 className="font-bold text-2xl">
-            Correct Answers (Score): {user?.score}
+          <h1 className="font-bold text-xs md:text-2xl">
+            <span className="hidden lg:block">
+              Correct Answers (Score): {user?.score}
+            </span>
+            <span className="lg:hidden block">Score: {user?.score}</span>
           </h1>
-          <h1 className="font-bold text-2xl">
-            Incorrect Answers: {user?.inCorrectAnswers}
+          <h1 className="font-bold text-xs md:text-2xl">
+            <span className="hidden lg:block">Incorrect Answers: {user?.inCorrectAnswers}</span>
+            <span className="lg:hidden block">Incorrect: {user?.inCorrectAnswers}</span>
           </h1>
         </div>
       </div>
-      <div className="w-full flex flex-col items-center justify-center mt-10">
+      <div className="w-full flex flex-col items-center justify-center mt-2 md:mt-10">
         <div className="w-fit h-fit flex flex-col items-center justify-center space-y-6">
           <div className="flex flex-col space-y-2 items-center">
-            <h1 className="text-4xl font-extrabold">Guess the City</h1>
-            <h1 className="text-2xl text-gray-600 font-extrabold">{clue}</h1>
+            <h1 className="text-2xl md:text-4xl font-extrabold">Guess the City</h1>
+            <h1 className="text-center md:text-2xl text-gray-600 font-extrabold">{clue}</h1>
           </div>
           <div className="w-full max-w-5xl h-fit flex flex-col space-y-3">
             <div className="flex flex-col space-y-4 rounded-md">
@@ -187,7 +193,7 @@ export default function Index() {
                     setDisableSubmit(false);
                     setSelectedOption(option);
                   }}
-                  className={`w-full py-4 rounded-md text-2xl font-bold border-4 hover:bg-black hover:text-white duration-300 border-black cursor-pointer ${
+                  className={`w-full py-2 md:py-4 rounded-md md:text-2xl font-bold border-4 hover:bg-black hover:text-white duration-300 border-black cursor-pointer ${
                     selectedOption === option
                       ? "bg-pink-500 hover:bg-pink-500"
                       : "bg-white"
@@ -200,14 +206,14 @@ export default function Index() {
             <div className="w-full flex space-x-2 justify-center items-center">
               <button
                 disabled={disableSubmit}
-                className={`w-full py-4 rounded-md text-2xl font-bold border-4 bg-indigo-500 hover:bg-black hover:text-white duration-300 border-black cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:text-black disabled:hover:bg-indigo-500`}
+                className={`w-full py-2 md:py-4 rounded-md  md:text-2xl font-bold border-4 bg-indigo-500 hover:bg-black hover:text-white duration-300 border-black cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:text-black disabled:hover:bg-indigo-500`}
                 onClick={() => submitAnswer(selectedOption)}
               >
                 Submit
               </button>
               <button
                 disabled={disableNext}
-                className={`w-full py-4 rounded-md text-2xl font-bold border-4 bg-indigo-500 hover:bg-black hover:text-white duration-300 border-black cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:text-black disabled:hover:bg-indigo-500`}
+                className={`w-full py-2 md:py-4 rounded-md  md:text-2xl font-bold border-4 bg-indigo-500 hover:bg-black hover:text-white duration-300 border-black cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:text-black disabled:hover:bg-indigo-500`}
                 onClick={fetchQuestions}
               >
                 Next
@@ -218,8 +224,8 @@ export default function Index() {
                 showFunFact ? "opacity-100" : "opacity-0"
               }`}
             >
-              <h1 className="font-bold text-3xl">Fun Fact</h1>
-              <h1 className="font-bold text-xl text-center text-gray-600">
+              <h1 className="font-bold md:text-3xl">Fun Fact</h1>
+              <h1 className="font-bold text-xs md:text-xl text-center text-gray-600">
                 {funFact}
               </h1>
             </div>
