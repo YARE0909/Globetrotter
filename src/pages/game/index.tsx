@@ -152,7 +152,7 @@ export default function Index() {
         <div className="flex space-x-2 md:space-x-4 items-center">
           <div className="h-full border-r-3 border-black pr-1 md:pr-2">
             <a href="/dashboard" className="">
-              <ArrowLeft className="w-2 h-2 md:w-10 md:h-10 rounded-full p-1 hover:bg-black hover:text-white duration-300" />
+              <ArrowLeft className="w-7 h-7 md:w-10 md:h-10 rounded-full p-1 hover:bg-black hover:text-white duration-300" />
             </a>
           </div>
           <div>
