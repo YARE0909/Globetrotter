@@ -70,7 +70,7 @@ export default function Index() {
         layout="fill"
       />
       {/* Main Content */}
-      <div className="relative z-10 w-full h-full flex flex-col items-center justify-center md:p-10 mt-10">
+      <div className="relative z-10 w-full h-full flex flex-col items-center justify-center md:p-10 mt-14">
         <div className="relative bg-white border-4 border-black rounded-md p-2 md:p-10 md:max-w-lg w-full bg-[radial-gradient(circle,_#302f3330_2px,_transparent_2px)] bg-[length:10px_10px]">
           {/* Profile Icon */}
           <div className="absolute -top-16 left-1/2 transform -translate-x-1/2 bg-white rounded-full">
