@@ -35,7 +35,6 @@ export default function Index() {
       });
       const data = await response.json();
       setUser(data.user);
-      console.log({ data });
     } catch (error) {
       console.error({ error });
     }

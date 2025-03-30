@@ -36,7 +36,6 @@ export default function Index() {
       });
       const data = await response.json();
       setUser(data.user);
-      console.log({ data });
     } catch (error) {
       console.error({ error });
     }
@@ -64,7 +63,6 @@ export default function Index() {
       setDisableSubmit(true);
       setFunFact("");
       setDisableOptions(false);
-      console.log({ data });
     } catch (error) {
       toast.error("Something went wrong");
       console.error({ error });
@@ -85,7 +83,6 @@ export default function Index() {
         body: JSON.stringify({ questionId: question?.id, answer }),
       });
       const data = await response.json();
-      console.log({ data });
       if (data.status === QuestionStatus.CorrectAnswer) {
         setAttempt(1);
         setAttemptsLeft(data.attemptsLeft);

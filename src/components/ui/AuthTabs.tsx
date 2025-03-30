@@ -38,7 +38,6 @@ const AuthTabs = () => {
         password: loginFormData.password,
       });
       const data = response.data;
-      console.log({ data });
       setCookie(null, "token", data.token, {
         maxAge: 30 * 24 * 60 * 60,
         path: "/",
@@ -76,14 +75,12 @@ const AuthTabs = () => {
         toast.error("User already exists");
       }
     } catch (error: any) {
-      console.log({ error });
       if (error.response.data.error === "User already exists") {
         toast.error("User already exists");
       } else {
         toast.error("Something went wrong");
       }
     }
-    console.log({ registerFormData });
   };
 
   return (

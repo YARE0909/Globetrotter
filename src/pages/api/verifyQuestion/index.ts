@@ -85,7 +85,7 @@ async function handler(req: AuthenticatedNextApiRequest, res: NextApiResponse) {
       }
     }
   } catch (error) {
-    console.log({ error });
+    console.error({ error });
     return res.status(500).json({ error: "Something Went Wrong" });
   }
 }
