@@ -44,6 +44,7 @@ export function Authorization(handler: NextApiHandler) {
           displayName: true,
           score: true,
           inCorrectAnswers: true,
+          friendId: true
         },
       });
       if (!user) {

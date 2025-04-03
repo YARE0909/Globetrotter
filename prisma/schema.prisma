@@ -8,13 +8,14 @@ datasource db {
 }
 
 model User {
-  id          String     @id @default(auto()) @map("_id") @db.ObjectId
-  userName    String     @unique
-  password    String
-  displayName String
-  score       Int        @default(0)
-  inCorrectAnswers Int   @default(0)
-  Question    Question[]
+  id               String     @id @default(auto()) @map("_id") @db.ObjectId
+  userName         String     @unique
+  password         String
+  displayName      String
+  score            Int        @default(0)
+  inCorrectAnswers Int        @default(0)
+  Question         Question[]
+  friendId         String[]
 }
 
 model Question {

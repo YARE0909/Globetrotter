@@ -47,7 +47,7 @@ export default async function handler(
           userName,
           password: hashedPassword,
           displayName,
-          score: 0, // default value as per your schema
+          score: 0,
         },
       });
 
