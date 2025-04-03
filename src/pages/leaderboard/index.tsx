@@ -1,55 +1,16 @@
-import Button from "@/components/ui/Button";
-import ChallengeFriend from "@/components/ui/Challenge";
-import Modal from "@/components/ui/Modal";
 import Navbar from "@/components/ui/Navbar";
-import { useRouter } from "next/router";
 import { parseCookies } from "nookies";
-import { useEffect, useState } from "react";
+import { GetStaticProps } from "next";
 
-export default function Index() {
-  const [leaderboard, setLeaderboard] = useState<
-    | {
-        userName: string;
-        displayName: string;
-        score: number;
-        inCorrectAnswers: number;
-        questionCount: number;
-      }[]
-    | null
-  >(null);
+type Player = {
+  userName: string;
+  displayName: string;
+  score: number;
+  inCorrectAnswers: number;
+  questionCount: number;
+};
 
-  const router = useRouter();
-
-  const fetchLeaderboard = async () => {
-    try {
-      const cookies = parseCookies();
-      const { token } = cookies;
-
-      const response = await fetch("/api/leaderboard", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const data = await response.json();
-      setLeaderboard(data.leaderboard);
-    } catch (error) {
-      console.error({ error });
-    }
-  };
-
-  useEffect(() => {
-    fetchLeaderboard();
-  }, []);
-
-  useEffect(() => {
-    const cookies = parseCookies();
-    const { token } = cookies;
-
-    if (!token) {
-      router.push("/");
-    }
-  }, []);
-
+export default function Index({ leaderboard }: { leaderboard: Player[] }) {
   return (
     <div className="w-full h-full flex flex-col mt-[6rem] p-2">
       <Navbar />
@@ -59,6 +20,7 @@ export default function Index() {
             Leaderboard
           </h1>
         </div>
+
         {/* Mobile View: Cards */}
         <div className="w-full flex flex-wrap justify-center gap-4 mt-4 md:hidden">
           {leaderboard ? (
@@ -92,6 +54,7 @@ export default function Index() {
             </div>
           )}
         </div>
+
         {/* Desktop View: Table */}
         <div className="hidden md:block w-full max-w-7xl mt-4">
           {leaderboard ? (
@@ -153,3 +116,21 @@ export default function Index() {
     </div>
   );
 }
+
+export const getStaticProps: GetStaticProps = async () => {
+  try {
+    const response = await fetch("http://localhost:3000/api/leaderboard");
+    const data = await response.json();
+
+    return {
+      props: { leaderboard: data.leaderboard },
+      revalidate: 10,
+    };
+  } catch (error) {
+    console.error({ error });
+    return {
+      props: { leaderboard: [] },
+      revalidate: 10,
+    };
+  }
+};
